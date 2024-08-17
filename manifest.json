@@ -2,14 +2,21 @@
   "manifest_version": 2,
   "name": "cuRMP",
   "description": "RMP extension for Carleton University",
-  "version": "1.0.0",
-  "permissions": ["activeTab", "webRequest", "https://service.scs.carleton.ca/cu-course-outline/*", "https://www.ratemyprofessors.com/*"],
+  "version": "1.0.1",
+  "permissions": [
+    "activeTab",
+    "https://central.carleton.ca/prod/*",
+    "https://www.ratemyprofessors.com/*"
+  ],
   "background": {
-    "scripts": ["scripts/background.js"]
+    "scripts": ["scripts/queries.js", "scripts/background.js"],
+    "persistent": true
   },
   "content_scripts": [
     {
-      "matches": ["https://service.scs.carleton.ca/cu-course-outline/*"],
+      "matches": [
+        "https://central.carleton.ca/prod/bwysched.p_course_search*"
+      ],
       "js": ["scripts/content.js"]
     }
   ]
